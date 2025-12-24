@@ -22,7 +22,7 @@ const VideoCard = () => {
           loading="lazy"
           className="absolute top-1/2 left-1/2 w-[100%] h-[150%] -translate-x-1/2 -translate-y-1/2 pointer-events-none border-0 scale-[1.35]"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        />
+        /> 
       </div>
 
       {/* 2. DESKTOP VERSION */}
