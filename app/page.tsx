@@ -10,7 +10,7 @@ import { useState, useEffect, useRef } from "react";
 const VideoCard = () => {
   const videoId = "44NEWQSnYM8";
   // The 'iv_load_policy=3' and 'disablekb=1' further clean up the YouTube UI
-  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&showinfo=0`;
+  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0`;
 
   return (
     <div className="aspect-video relative rounded-lg overflow-hidden shadow-sm bg-charcoal">
@@ -18,6 +18,8 @@ const VideoCard = () => {
       <div className="md:hidden w-full h-full relative">
         <iframe 
           src={embedUrl}
+          title="HERdacity Community Video"
+          loading="lazy"
           className="absolute top-1/2 left-1/2 w-[100%] h-[150%] -translate-x-1/2 -translate-y-1/2 pointer-events-none border-0 scale-[1.35]"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         />
@@ -213,7 +215,7 @@ export default function Home() {
                 src="/image_0.png" 
                 alt="Ebunoluwa Arimoro"
                 fill
-                sizes="(max-width: 768px) 100vw, 400px"
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover object-top grayscale-0 md:grayscale md:group-hover:grayscale-0 transition-all duration-700 ease-in-out"
                 priority
               />
