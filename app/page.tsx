@@ -124,7 +124,7 @@ export default function Home() {
             {/* HAMBURGER (Mobile Only) */}
             <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden text-white p-2"
+                className="md:hidden text-white p-2 " aria-label="Toggle Menu"
             >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -191,7 +191,7 @@ export default function Home() {
 
             {/* --- REFINED RECOGNIZED SECTION (Restored Size) --- */}
             <div className="border-t border-white/10 pt-8">
-                <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-4">Trusted & Recognized By</p>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-gray-400 mb-4">Trusted & Recognized By</p>
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-4 opacity-50 grayscale whitespace-nowrap">
                     <span className="font-serif text-white font-bold text-lg tracking-tighter">Founders Institute</span>
                     <span className="font-serif text-white font-bold text-lg tracking-tighter">Aurora Tech</span>
@@ -213,6 +213,7 @@ export default function Home() {
                 src="/image_0.png" 
                 alt="Ebunoluwa Arimoro"
                 fill
+                sizes="(max-width: 768px) 100vw, 400px"
                 className="object-cover object-top grayscale-0 md:grayscale md:group-hover:grayscale-0 transition-all duration-700 ease-in-out"
                 priority
               />
