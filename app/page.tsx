@@ -8,52 +8,32 @@ import { useState, useEffect, useRef } from "react";
 
 // --- HELPER COMPONENT: BALANCED VIDEO CARD ---
 const VideoCard = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handleMouseEnter = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
+  const videoId = "44NEWQSnYM8";
+  // The 'iv_load_policy=3' and 'disablekb=1' further clean up the YouTube UI
+  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&showinfo=0`;
 
   return (
-    <div className="aspect-video relative rounded-lg overflow-hidden shadow-sm bg-gray-200">
-      {/* 1. MOBILE VERSION (Full Color, No Overlay Text) */}
+    <div className="aspect-video relative rounded-lg overflow-hidden shadow-sm bg-charcoal">
+      {/* 1. MOBILE VERSION */}
       <div className="md:hidden w-full h-full relative">
-        <video 
-          autoPlay 
-          muted 
-          playsInline 
-          loop
-          className="w-full h-full object-cover"
-        >
-           <source src="/herdacity-video.mp4" type="video/mp4" />
-        </video>
+        <iframe 
+          src={embedUrl}
+          className="absolute top-1/2 left-1/2 w-[100%] h-[150%] -translate-x-1/2 -translate-y-1/2 pointer-events-none border-0 scale-[1.35]"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        />
       </div>
 
-      {/* 2. DESKTOP VERSION (Hover Symmetry) */}
-      <div 
-        className="hidden md:block w-full h-full relative cursor-pointer group"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <video 
-          ref={videoRef}
-          muted 
-          playsInline 
-          loop
-          className="w-full h-full object-cover grayscale group-hover:grayscale-0 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out"
-        >
-           <source src="/herdacity-video.mp4" type="video/mp4" />
-        </video>
+      {/* 2. DESKTOP VERSION */}
+      <div className="hidden md:block w-full h-full relative cursor-pointer group">
+        <div className="w-full h-full grayscale group-hover:grayscale-0 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out">
+          <iframe 
+            src={embedUrl}
+            className="absolute top-1/2 left-1/2 w-[100%] h-[180%] -translate-x-1/2 -translate-y-1/2 pointer-events-none border-0 scale-[1.2]"
+            allow="autoplay; encrypted-media"
+          />
+        </div>
 
+        {/* Static Keyframe Image */}
         <div className="absolute inset-0 z-0 group-hover:opacity-0 transition-opacity duration-700">
           <Image 
               src="/herdacity-video-keyframe.jpg" 
@@ -63,6 +43,7 @@ const VideoCard = () => {
           />
         </div>
         
+        {/* Play Prompt Overlay */}
         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 flex items-center justify-center z-10">
              <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-white text-[10px] font-mono uppercase tracking-widest group-hover:opacity-0 transition-opacity">
                 Hover to Play

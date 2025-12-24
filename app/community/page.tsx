@@ -6,37 +6,22 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
 
-// --- HELPER COMPONENT: RESPONSIVE VIDEO CARD ---
+// --- HELPER COMPONENT: BALANCED VIDEO CARD (YouTube Fill Version) ---
 const VideoCard = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handleMouseEnter = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-    }
-  };
+  const videoId = "44NEWQSnYM8";
+  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&showinfo=0`;
 
   return (
-    <>
-      {/* --- 1. MOBILE VERSION (Auto-plays) --- */}
-      <div className="md:hidden group relative aspect-video bg-black rounded-2xl overflow-hidden shadow-lg">
-        <video 
-          autoPlay 
-          muted 
-          playsInline 
-          loop
-          className="w-full h-full object-cover"
-        >
-           <source src="/herdacity-video.mp4" type="video/mp4" />
-        </video>
-        
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 z-10">
+    <div className="aspect-video relative rounded-lg overflow-hidden shadow-sm bg-charcoal">
+      {/* 1. MOBILE VERSION (Full Color / No Bars) */}
+      <div className="md:hidden w-full h-full relative">
+        <iframe 
+          src={embedUrl}
+          className="absolute top-1/2 left-1/2 w-[100%] h-[150%] -translate-x-1/2 -translate-y-1/2 pointer-events-none border-0 scale-[1.35]"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        />
+        {/* TEXT OVERLAY FOR MOBILE */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 z-10 pointer-events-none">
             <span className="text-brand-pink text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md">Dec 2025</span>
             <h3 className="text-white font-serif text-2xl drop-shadow-md">Becoming Her</h3>
             <p className="text-gray-100 text-sm mt-2 leading-relaxed font-medium drop-shadow-md">
@@ -45,52 +30,46 @@ const VideoCard = () => {
         </div>
       </div>
 
-      {/* --- 2. DESKTOP VERSION (Play on Hover) --- */}
-      <div 
-        className="hidden md:block group relative aspect-video bg-charcoal rounded-2xl overflow-hidden cursor-pointer shadow-lg"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        {/* Video (Initially Hidden) */}
-        <video 
-          ref={videoRef}
-          muted 
-          playsInline 
-          loop
-          className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-        >
-           <source src="/herdacity-video.mp4" type="video/mp4" />
-        </video>
+      {/* 2. DESKTOP VERSION (Full Color / Restored Event Text) */}
+      <div className="hidden md:block w-full h-full relative cursor-pointer group">
+        <div className="w-full h-full opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out">
+          <iframe 
+            src={embedUrl}
+            className="absolute top-1/2 left-1/2 w-[100%] h-[180%] -translate-x-1/2 -translate-y-1/2 pointer-events-none border-0 scale-[1.2]"
+            allow="autoplay; encrypted-media"
+          />
+        </div>
 
-        {/* Static Poster Image (Visible when paused) */}
+        {/* Static Keyframe Image - Full Color */}
         <div className="absolute inset-0 z-0 group-hover:opacity-0 transition-opacity duration-700">
           <Image 
               src="/herdacity-video-keyframe.jpg" 
-              alt="Becoming Her Event"
+              alt="Community Video"
               fill
               className="object-cover"
           />
         </div>
-        
-        {/* Overlay Text */}
+
+        {/* RESTORED EVENT TEXT OVERLAY */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 z-10 pointer-events-none">
             <span className="text-brand-pink text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md">Dec 2025</span>
             <h3 className="text-white font-serif text-2xl drop-shadow-md">Becoming Her</h3>
             <p className="text-gray-100 text-sm mt-2 leading-relaxed font-medium drop-shadow-md">
-                End of year strategic goal-setting session with our members in Lagos.
+                End of year strategic goal-setting session with our members in Lagos, Nigeria.
             </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
+
 export default function CommunityPage() {
   return (
-    <main className="min-h-screen bg-white text-charcoal font-sans selection:bg-brand-pink selection:text-white">
+    <main className="min-h-screen bg-white text-charcoal font-sans selection:bg-brand-pink selection:text-white antialiased transform-gpu">
       
       {/* --- NAVIGATION --- */}
-      <nav className="fixed top-0 left-0 right-0 z-[100] py-6 px-6 md:px-12 flex justify-between items-center bg-white/90 backdrop-blur-md border-b border-charcoal/5">
+      <nav className="fixed top-0 left-0 right-0 z-[100] py-6 px-6 md:px-12 flex justify-between items-center bg-white/90 backdrop-blur-md border-b border-charcoal/5 will-change-transform">
         <Link href="/" className="font-serif font-bold tracking-widest uppercase text-charcoal hover:opacity-70 transition-opacity">
           Ebun.
         </Link>
@@ -121,7 +100,7 @@ export default function CommunityPage() {
               Talent is distributed, but opportunity is concentrated. 
             </p>
             <p>
-              I founded <strong>The HERdacity Network</strong> to bridge that gap. We are not just a "community" &mdash; we are a career accelerator for ambitious women in tech. We focus on the "Human Operating System": Confidence, Personal Branding, and Leadership Visibility.
+              We founded <strong>The HERdacity Network</strong> to bridge that gap. We focus on the "Human Operating System": Confidence, Personal Branding, and Leadership Visibility.
             </p>
           </div>
         </motion.div>
@@ -180,14 +159,13 @@ export default function CommunityPage() {
                 {/* CARD 1: VIDEO (Responsive Component) */}
                 <VideoCard />
 
-                {/* CARD 2: ONLINE ACADEMY (Image with Adjusted Position) */}
+                {/* CARD 2: ONLINE ACADEMY (Full Color Image) */}
                 <div className="group relative aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
                      <Image 
                         src="/herdacity-community.jpg" 
                         alt="HERdacity Online Academy"
                         fill 
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
-                        // FIX: Nudge the focus point down to 65% (shows lower part of image, pushing faces UP)
                         style={{ objectPosition: "50% 65%" }}
                     />
                      
@@ -218,44 +196,56 @@ export default function CommunityPage() {
       </section>
 
       {/* --- FOOTER MENU --- */}
-      {/* --- REFINED STACKED FOOTER (Light) --- */}
-      {/* --- REFINED STACKED FOOTER (Light) --- */}
-      <footer className="bg-white text-charcoal pt-20 pb-10 px-6 md:px-12 border-t border-charcoal/10 relative z-20">
-  <div className="max-w-6xl mx-auto text-center md:text-left">
-    <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block text-center md:text-left">Explore</span>
-    
-    {/* Stacked on mobile (flex-col), 5 columns on desktop (md:grid-cols-5) */}
-    <div className="flex flex-col items-center md:grid md:grid-cols-5 md:items-start gap-8 mb-16">
-      <Link href="/" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
-        <Layout size={20}/> Home
-      </Link>
-      <Link href="/about" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
-        <Target size={20}/> About
-      </Link>
-      <Link href="/jobapay-ai" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
-        <Layers size={20}/> Jobapay AI
-      </Link>
-      <Link href="/engineering" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
-        <Terminal size={20}/> Engineering
-      </Link>
-      <Link href="/code-to-lead" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
-        <PenTool size={20}/> Code to Lead
-      </Link>
-    </div>
+      <footer className="py-12 md:py-20 px-6 md:px-12 bg-white border-t border-gray-200">
+        <div className="max-w-6xl mx-auto">
+            <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block text-center md:text-left">Explore</span>
+            
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-y-10 md:gap-x-8 mb-16 text-center md:text-left">
+                <Link href="/" className="group block">
+                    <div className="flex items-center justify-center md:justify-start gap-2 mb-2 text-charcoal font-bold text-lg group-hover:text-brand-pink transition-colors">
+                        <Layout size={20}/> Home
+                    </div>
+                </Link>
 
-    {/* Bottom Branding & Contacts */}
-    <div className="flex flex-col md:flex-row justify-between items-center gap-8 border-t border-charcoal/10 pt-12">
-      <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 text-[10px] font-mono uppercase tracking-[0.2em] text-charcoal">
-         <Link href="mailto:ebunarimoro@gmail.com" className="hover:text-brand-pink transition-colors font-bold">EMAIL</Link>
-         <Link href="https://linkedin.com/in/ebunoluwa-arimoro" target="_blank" className="hover:text-brand-pink transition-colors font-bold">LINKEDIN</Link>
-         <Link href="https://github.com/EbunoluwaArimoro/" target="_blank" className="hover:text-brand-pink transition-colors font-bold">GITHUB</Link>
-      </div>
-      <div className="text-[9px] text-charcoal font-mono tracking-widest uppercase md:ml-auto text-center md:text-right">
-        © 2026 Ebunoluwa Arimoro.
-      </div>
-    </div>
-  </div>
-</footer>
+                <Link href="/about" className="group block">
+                    <div className="flex items-center justify-center md:justify-start gap-2 mb-2 text-charcoal font-bold text-lg group-hover:text-brand-pink transition-colors">
+                        <Target size={20}/> About
+                    </div>
+                </Link>
+
+                <Link href="/jobapay-ai" className="group block">
+                    <div className="flex items-center justify-center md:justify-start gap-2 mb-2 text-charcoal font-bold text-lg group-hover:text-brand-pink transition-colors">
+                        <Layers size={20}/> Jobapay AI
+                    </div>
+                </Link>
+
+                <Link href="/engineering" className="group block">
+                    <div className="flex items-center justify-center md:justify-start gap-2 mb-2 text-charcoal font-bold text-lg group-hover:text-brand-pink transition-colors">
+                        <Terminal size={20}/> Engineering
+                    </div>
+                </Link>
+
+                <Link href="/code-to-lead" className="group block">
+                    <div className="flex items-center justify-center md:justify-start gap-2 mb-2 text-charcoal font-bold text-lg group-hover:text-brand-pink transition-colors">
+                        <PenTool size={20}/> Code to Lead
+                    </div>
+                </Link>
+            </div>
+
+            <div className="mt-16 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 gap-8">
+                <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-center md:text-left">
+                    <span className="opacity-60">© 2026 Ebunoluwa Arimoro</span>
+                    <div className="flex items-center gap-6 font-bold uppercase tracking-widest text-[10px]">
+                        <Link href="mailto:ebunarimoro@gmail.com" className="hover:text-charcoal transition-colors">EMAIL</Link>
+                        <Link href="https://linkedin.com/in/ebunoluwa-arimoro" target="_blank" className="hover:text-charcoal transition-colors">LINKEDIN</Link>
+                        <Link href="https://github.com/EbunoluwaArimoro/" target="_blank" className="hover:text-charcoal transition-colors">GITHUB</Link>
+                    </div>
+                </div>
+                <span className="font-serif italic text-charcoal opacity-50 tracking-wide">Architecting Certainty.</span>
+            </div>
+        </div>
+      </footer>
+
     </main>
   );
 }
