@@ -6,23 +6,34 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
 
-// --- HELPER COMPONENT: BALANCED VIDEO CARD (YouTube Fill Version) ---
+// --- HELPER COMPONENT: BALANCED VIDEO CARD (Local File Version) ---
 const VideoCard = () => {
-  const videoId = "44NEWQSnYM8";
-  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&showinfo=0`;
+  // Now using the local compressed file
+  const videoSource = "/herdacity-video.mp4"; 
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) videoRef.current.play();
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) videoRef.current.pause();
+  };
 
   return (
     <div className="aspect-video relative rounded-lg overflow-hidden shadow-sm bg-charcoal">
+      
       {/* 1. MOBILE VERSION (Full Color / No Bars) */}
       <div className="md:hidden w-full h-full relative">
-        <iframe 
-          src={embedUrl}
-          title="HERdacity Community Video"
-          loading="lazy"
-          className="absolute top-1/2 left-1/2 w-[100%] h-[150%] -translate-x-1/2 -translate-y-1/2 pointer-events-none border-0 scale-[1.35]"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        <video
+          src={videoSource}
+          className="w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline // CRITICAL for iOS
         />
-        {/* TEXT OVERLAY FOR MOBILE */}
+        {/* TEXT OVERLAY FOR MOBILE (PRESERVED) */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 z-10 pointer-events-none">
             <span className="text-brand-pink text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md">Dec 2025</span>
             <h3 className="text-white font-serif text-2xl drop-shadow-md">Becoming Her</h3>
@@ -33,12 +44,19 @@ const VideoCard = () => {
       </div>
 
       {/* 2. DESKTOP VERSION (Full Color / Restored Event Text) */}
-      <div className="hidden md:block w-full h-full relative cursor-pointer group">
-        <div className="w-full h-full opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out">
-          <iframe 
-            src={embedUrl}
-            className="absolute top-1/2 left-1/2 w-[100%] h-[180%] -translate-x-1/2 -translate-y-1/2 pointer-events-none border-0 scale-[1.2]"
-            allow="autoplay; encrypted-media"
+      <div 
+        className="hidden md:block w-full h-full relative cursor-pointer group"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="w-full h-full opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out absolute inset-0 z-10">
+          <video
+            ref={videoRef}
+            src={videoSource}
+            className="w-full h-full object-cover"
+            loop
+            muted
+            playsInline
           />
         </div>
 
@@ -52,7 +70,7 @@ const VideoCard = () => {
           />
         </div>
 
-        {/* RESTORED EVENT TEXT OVERLAY */}
+        {/* RESTORED EVENT TEXT OVERLAY (PRESERVED) */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 z-10 pointer-events-none">
             <span className="text-brand-pink text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md">Dec 2025</span>
             <h3 className="text-white font-serif text-2xl drop-shadow-md">Becoming Her</h3>
@@ -163,15 +181,15 @@ export default function CommunityPage() {
 
                 {/* CARD 2: ONLINE ACADEMY (Full Color Image) */}
                 <div className="group relative aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
-                     <Image 
+                      <Image 
                         src="/herdacity-community.jpg" 
                         alt="HERdacity Online Academy"
                         fill 
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                         style={{ objectPosition: "50% 65%" }}
                     />
-                     
-                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8">
+                      
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8">
                         <span className="text-brand-pink text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md">Online Academy</span>
                         <h3 className="text-white font-serif text-2xl drop-shadow-md">The Knowledge Hub</h3>
                         <p className="text-gray-100 text-sm mt-2 leading-relaxed font-medium drop-shadow-md">

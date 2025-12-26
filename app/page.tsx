@@ -6,36 +6,53 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 
-// --- HELPER COMPONENT: BALANCED VIDEO CARD ---
+// --- HELPER COMPONENT: FIXED VIDEO CARD (Local File) ---
 const VideoCard = () => {
-  const videoId = "44NEWQSnYM8";
-  // The 'iv_load_policy=3' and 'disablekb=1' further clean up the YouTube UI
-  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&showinfo=0`;
+  // Pointing to the file we just optimized and pushed
+  const videoSource = "/herdacity-video.mp4"; 
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) videoRef.current.play();
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) videoRef.current.pause();
+  };
 
   return (
     <div className="aspect-video relative rounded-lg overflow-hidden shadow-sm bg-charcoal">
-      {/* 1. MOBILE VERSION */}
+      
+      {/* 1. MOBILE VERSION - Auto Plays Always */}
       <div className="md:hidden w-full h-full relative">
-        <iframe 
-          src={embedUrl}
-          title="HERdacity Community Video"
-          loading="lazy"
-          className="absolute top-1/2 left-1/2 w-[100%] h-[150%] -translate-x-1/2 -translate-y-1/2 pointer-events-none border-0 scale-[1.35]"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        <video
+          src={videoSource}
+          className="w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline // CRITICAL for iOS
         />
       </div>
 
-      {/* 2. DESKTOP VERSION */}
-      <div className="hidden md:block w-full h-full relative cursor-pointer group">
-        <div className="w-full h-full grayscale group-hover:grayscale-0 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out">
-          <iframe 
-            src={embedUrl}
-            className="absolute top-1/2 left-1/2 w-[100%] h-[180%] -translate-x-1/2 -translate-y-1/2 pointer-events-none border-0 scale-[1.2]"
-            allow="autoplay; encrypted-media"
+      {/* 2. DESKTOP VERSION - Plays on Hover */}
+      <div 
+        className="hidden md:block w-full h-full relative cursor-pointer group"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="w-full h-full grayscale group-hover:grayscale-0 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out absolute inset-0 z-10">
+          <video
+            ref={videoRef}
+            src={videoSource}
+            className="w-full h-full object-cover"
+            loop
+            muted
+            playsInline
           />
         </div>
 
-        {/* Static Keyframe Image */}
+        {/* Static Keyframe Image (Visible until hover) */}
         <div className="absolute inset-0 z-0 group-hover:opacity-0 transition-opacity duration-700">
           <Image 
               src="/herdacity-video-keyframe.jpg" 
@@ -46,7 +63,7 @@ const VideoCard = () => {
         </div>
         
         {/* Play Prompt Overlay */}
-        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 flex items-center justify-center z-10">
+        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 flex items-center justify-center z-20 pointer-events-none">
              <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-white text-[10px] font-mono uppercase tracking-widest group-hover:opacity-0 transition-opacity">
                 Hover to Play
              </div>
@@ -442,11 +459,11 @@ export default function Home() {
               {/* RIGHT: BALANCED IMAGE CARD (Full color on mobile) */}
               <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden relative group/img shadow-sm">
                 <Image 
-                    src="/herdacity-community.jpg" 
-                    alt="Community Gathering" 
-                    fill 
-                    className="object-cover grayscale-0 md:grayscale md:group-hover/img:grayscale-0 transition-all duration-700 ease-in-out group-hover/img:scale-105" 
-                    style={{ objectPosition: "50% 65%" }}
+                  src="/herdacity-community.jpg" 
+                  alt="Community Gathering" 
+                  fill 
+                  className="object-cover grayscale-0 md:grayscale md:group-hover/img:grayscale-0 transition-all duration-700 ease-in-out group-hover/img:scale-105" 
+                  style={{ objectPosition: "50% 65%" }}
                 /> 
                 <div className="absolute inset-0 bg-black/20 md:group-hover/img:bg-transparent transition-colors duration-500 flex items-center justify-center z-10">
                     <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-white text-[10px] font-mono uppercase tracking-widest hidden md:block group-hover/img:opacity-0 transition-opacity">
@@ -507,30 +524,29 @@ export default function Home() {
       </section>
 
       {/* --- REFINED FOOTER --- */}
-      {/* --- REFINED STACKED FOOTER --- */}
       <footer id="contact" className="bg-charcoal text-white pt-20 pb-10 px-6 md:px-12 border-t border-white/10 relative z-20">
-  <div className="max-w-6xl mx-auto">
-    <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block text-center md:text-left">Explore</span>
-    <div className="flex flex-col items-center md:grid md:grid-cols-5 md:items-start gap-8 mb-16">
-      <Link href="/about" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><Target size={20}/> About</Link>
-      <Link href="/jobapay-ai" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><Layers size={20}/> Jobapay AI</Link>
-      <Link href="/engineering" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><Terminal size={20}/> Engineering</Link>
-      <Link href="/community" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><Network size={20}/> Community</Link>
-      <Link href="/code-to-lead" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><PenTool size={20}/> Code to Lead</Link>
-    </div>
-    <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-12 border-t border-white/10 pt-12">
-      <div className="w-full md:w-auto text-center md:text-left">
-        <h2 className="font-serif text-7xl md:text-8xl opacity-20 font-bold mb-8 md:mb-4 uppercase tracking-tighter text-white">EBUN.</h2>
-        <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 text-[10px] font-mono uppercase tracking-[0.2em] text-white">
-           <Link href="mailto:ebunarimoro@gmail.com" className="hover:text-brand-pink transition-colors font-bold">EMAIL</Link>
-           <Link href="https://linkedin.com/in/ebunoluwa-arimoro" target="_blank" className="hover:text-brand-pink transition-colors font-bold">LINKEDIN</Link>
-           <Link href="https://github.com/EbunoluwaArimoro/" target="_blank" className="hover:text-brand-pink transition-colors font-bold">GITHUB</Link>
+        <div className="max-w-6xl mx-auto">
+          <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block text-center md:text-left">Explore</span>
+          <div className="flex flex-col items-center md:grid md:grid-cols-5 md:items-start gap-8 mb-16">
+            <Link href="/about" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><Target size={20}/> About</Link>
+            <Link href="/jobapay-ai" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><Layers size={20}/> Jobapay AI</Link>
+            <Link href="/engineering" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><Terminal size={20}/> Engineering</Link>
+            <Link href="/community" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><Network size={20}/> Community</Link>
+            <Link href="/code-to-lead" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><PenTool size={20}/> Code to Lead</Link>
+          </div>
+          <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-12 border-t border-white/10 pt-12">
+            <div className="w-full md:w-auto text-center md:text-left">
+              <h2 className="font-serif text-7xl md:text-8xl opacity-20 font-bold mb-8 md:mb-4 uppercase tracking-tighter text-white">EBUN.</h2>
+              <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 text-[10px] font-mono uppercase tracking-[0.2em] text-white">
+                 <Link href="mailto:ebunarimoro@gmail.com" className="hover:text-brand-pink transition-colors font-bold">EMAIL</Link>
+                 <Link href="https://linkedin.com/in/ebunoluwa-arimoro" target="_blank" className="hover:text-brand-pink transition-colors font-bold">LINKEDIN</Link>
+                 <Link href="https://github.com/EbunoluwaArimoro/" target="_blank" className="hover:text-brand-pink transition-colors font-bold">GITHUB</Link>
+              </div>
+            </div>
+            <div className="w-full md:w-auto text-center md:text-right text-[9px] text-white font-mono tracking-widest uppercase">© 2026 Ebunoluwa Arimoro.</div>
+          </div>
         </div>
-      </div>
-      <div className="w-full md:w-auto text-center md:text-right text-[9px] text-white font-mono tracking-widest uppercase">© 2026 Ebunoluwa Arimoro.</div>
-    </div>
-  </div>
-</footer>
+      </footer>
     </main>
   );
 }
