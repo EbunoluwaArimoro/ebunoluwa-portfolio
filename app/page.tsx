@@ -22,7 +22,7 @@ const VideoCard = () => {
           loading="lazy"
           className="absolute top-1/2 left-1/2 w-[100%] h-[150%] -translate-x-1/2 -translate-y-1/2 pointer-events-none border-0 scale-[1.35]"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        /> 
+        />
       </div>
 
       {/* 2. DESKTOP VERSION */}
@@ -196,7 +196,7 @@ export default function Home() {
                 <p className="font-mono text-[10px] uppercase tracking-widest text-gray-400 mb-4">Trusted & Recognized By</p>
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-4 opacity-50 grayscale whitespace-nowrap">
                     <span className="font-serif text-white font-bold text-lg tracking-tighter">Founders Institute</span>
-                    <span className="font-serif text-white font-bold text-lg tracking-tighter">Aurora Tech</span>
+                    <span className="font-serif text-white font-bold text-lg tracking-tighter">Aurora Tech Awards</span>
                     <span className="font-serif text-white font-bold text-lg tracking-tighter">BusinessDay</span>
                     <span className="font-serif text-white font-bold text-lg tracking-tighter">Crest Africa</span>
                 </div>
