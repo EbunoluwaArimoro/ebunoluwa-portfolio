@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, Users, Mic, Heart, Target, TrendingUp, ArrowRight, Layout, Terminal, PenTool, ExternalLink, Layers } from "lucide-react";
+import { ArrowLeft, Users, Mic, Heart, Network, Target, TrendingUp, ArrowRight, Layout, Terminal, PenTool, ExternalLink, Layers } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
@@ -225,40 +225,26 @@ export default function CommunityPage() {
 
       {/* --- FOOTER MENU (Alignment Fixed) --- */}
       <footer className="bg-white text-charcoal pt-20 pb-10 px-6 md:px-12 border-t border-charcoal/10 relative z-20">
-        <div className="max-w-6xl mx-auto text-left">
-          <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block text-center">Explore</span>
-          
-          <div className="flex flex-col items-start md:grid md:grid-cols-5 md:items-start gap-8 mb-16 text-left">
-            <Link href="/" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
-              <Layout size={20}/> Home
-            </Link>
-            <Link href="/about" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
-              <Target size={20}/> About
-            </Link>
-            <Link href="/jobapay" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
-              <Layers size={20}/> Jobapay
-            </Link>
-            <Link href="/engineering" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
-              <Terminal size={20}/> Engineering
-            </Link>
-            <Link href="/code-to-lead" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
-              <PenTool size={20}/> Code to Lead
-            </Link>
-          </div>
-
-          <div className="flex flex-col md:flex-row justify-between items-start gap-8 border-t border-charcoal/10 pt-12">
-            <div className="flex flex-wrap justify-start gap-x-8 gap-y-4 text-[10px] font-mono uppercase tracking-[0.2em] text-charcoal font-bold">
-               <Link href="mailto:ebunarimoro@gmail.com" className="hover:text-brand-pink transition-colors">EMAIL</Link>
-               <Link href="https://linkedin.com/in/ebunoluwa-arimoro" target="_blank" className="hover:text-brand-pink transition-colors">LINKEDIN</Link>
-               <Link href="https://github.com/EbunoluwaArimoro/" target="_blank" className="hover:text-brand-pink transition-colors">GITHUB</Link>
-               <Link href="https://ebunoluwa-arimoro-portfolio-website.webflow.io/" target="_blank" className="hover:text-brand-pink transition-colors font-bold">PORTFOLIO</Link>
-            </div>
-            <div className="text-[9px] text-charcoal font-mono tracking-widest uppercase md:ml-auto">
-              © 2026 Ebunoluwa Arimoro.
-            </div>
-          </div>
-        </div>
-      </footer>
+  <div className="max-w-6xl mx-auto text-center md:text-left">
+    <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block">Explore</span>
+    <div className="flex flex-col items-center md:grid md:grid-cols-5 md:items-start gap-8 mb-16">
+      <Link href="/" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Layout size={20}/> Home</Link>
+      <Link href="/jobapay" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Layers size={20}/> Jobapay</Link>
+      <Link href="/community" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Network size={20}/> Community</Link>
+      <Link href="/engineering" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Terminal size={20}/> Engineering</Link>
+      <Link href="/code-to-lead" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><PenTool size={20}/> Code to Lead</Link>
+    </div>
+    <div className="flex flex-col md:flex-row justify-between items-center gap-8 border-t border-charcoal/10 pt-12">
+      <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 text-[10px] font-mono uppercase tracking-[0.2em] text-charcoal">
+         <Link href="mailto:ebunarimoro@gmail.com" className="hover:text-brand-pink transition-colors font-bold">EMAIL</Link>
+         <Link href="https://linkedin.com/in/ebunoluwa-arimoro" target="_blank" className="hover:text-brand-pink transition-colors font-bold">LINKEDIN</Link>
+         <Link href="https://github.com/EbunoluwaArimoro/" target="_blank" className="hover:text-brand-pink transition-colors font-bold">GITHUB</Link>
+         <Link href="https://ebunoluwa-arimoro-portfolio-website.webflow.io/" target="_blank" className="hover:text-brand-pink transition-colors font-bold">PORTFOLIO</Link>
+      </div>
+      <div className="text-[9px] text-charcoal font-mono tracking-widest uppercase md:ml-auto">© 2026 Ebunoluwa Arimoro.</div>
+    </div>
+  </div>
+</footer>
 
     </main>
   );
