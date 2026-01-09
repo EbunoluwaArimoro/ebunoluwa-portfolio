@@ -68,7 +68,7 @@ export default function Navbar() {
               className="absolute top-full left-0 right-0 mt-4 bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 shadow-2xl flex flex-col gap-6 md:hidden overflow-hidden"
             >
               <div className="flex flex-col gap-4 text-sm font-medium text-gray-300 uppercase tracking-wide text-center">
-                <Link href="/jobapay-ai" className="hover:text-brand-pink transition-colors py-2 border-b border-white/5">Jobapay AI</Link>
+                <Link href="/jobapay" className="hover:text-brand-pink transition-colors py-2 border-b border-white/5">Jobapay</Link>
                 <Link href="/engineering" className="hover:text-brand-pink transition-colors py-2 border-b border-white/5">Engineering</Link>
                 <Link href="/community" className="hover:text-brand-pink transition-colors py-2 border-b border-white/5">Community</Link>
                 <Link href="/code-to-lead" className="hover:text-brand-pink transition-colors py-2 border-b border-white/5">Code to Lead</Link>
