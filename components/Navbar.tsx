@@ -32,7 +32,7 @@ export default function Navbar() {
         
         {/* DESKTOP LINKS */}
         <div className="hidden md:flex gap-8 text-xs font-medium text-gray-300 uppercase tracking-wide">
-          <Link href="/jobapay-ai" className="hover:text-white transition-colors">Jobapay AI</Link>
+          <Link href="/jobapay" className="hover:text-white transition-colors">Jobapay</Link>
           <Link href="/engineering" className="hover:text-white transition-colors">Engineering</Link>
           <Link href="/community" className="hover:text-white transition-colors">Community</Link>
           <Link href="/code-to-lead" className="hover:text-white transition-colors">Code to Lead</Link>

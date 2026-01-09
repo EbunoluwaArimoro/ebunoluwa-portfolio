@@ -8,7 +8,7 @@ export default function Footer() {
         <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block text-center md:text-left">Explore</span>
         <div className="flex flex-col items-center md:grid md:grid-cols-5 md:items-start gap-8 mb-16">
           <FooterLink href="/about" icon={<Target size={20}/>} label="About" />
-          <FooterLink href="/jobapay-ai" icon={<Layers size={20}/>} label="Jobapay AI" />
+          <FooterLink href="/jobapay" icon={<Layers size={20}/>} label="Jobapay" />
           <FooterLink href="/engineering" icon={<Terminal size={20}/>} label="Engineering" />
           <FooterLink href="/community" icon={<Network size={20}/>} label="Community" />
           <FooterLink href="/code-to-lead" icon={<PenTool size={20}/>} label="Code to Lead" />

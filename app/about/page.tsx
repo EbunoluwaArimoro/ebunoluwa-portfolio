@@ -94,7 +94,7 @@ export default function AboutPage() {
     <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block">Explore</span>
     <div className="flex flex-col items-center md:grid md:grid-cols-5 md:items-start gap-8 mb-16">
       <Link href="/" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Layout size={20}/> Home</Link>
-      <Link href="/jobapay-ai" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Layers size={20}/> Jobapay AI</Link>
+      <Link href="/jobapay" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Layers size={20}/> Jobapay</Link>
       <Link href="/engineering" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Terminal size={20}/> Engineering</Link>
       <Link href="/community" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Network size={20}/> Community</Link>
       <Link href="/code-to-lead" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><PenTool size={20}/> Code to Lead</Link>

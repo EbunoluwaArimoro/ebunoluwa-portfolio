@@ -127,7 +127,7 @@ export default function JobapayPage() {
 
       {/* --- 6. FOOTER (Alignment Fixed) --- */}
       <footer className="bg-white text-charcoal pt-20 pb-10 px-6 md:px-12 border-t border-charcoal/10 relative z-20">
-        <div className="max-w-6xl mx-auto text-left">
+        <div className="max-w-6xl mx-auto text-center">
           <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block text-left">Explore</span>
           
           <div className="flex flex-col items-start md:grid md:grid-cols-5 md:items-start gap-8 mb-16 text-left">

@@ -199,7 +199,7 @@ export default function CodeToLeadPage() {
                     <div className="space-y-4">
                         <div className="flex items-center gap-2 text-brand-purple mb-2"><Globe size={20}/> <span className="font-bold uppercase tracking-widest text-[10px]">Founder Series</span></div>
                         <h4 className="font-serif text-3xl md:text-4xl">Aurora Tech Awards Feature</h4>
-                        <p className="text-gray-500 leading-relaxed">A strategic feature on my leadership at Jobapay AI.</p>
+                        <p className="text-gray-500 leading-relaxed">A strategic feature on my leadership at Jobapay.</p>
                         <div className="flex gap-4 pt-2">
                             <Link href="https://www.linkedin.com/posts/aurora-tech-award_a-day-with-the-boldest-founder-activity-7401915187232079872-Age1" target="_blank" className="text-xs font-bold flex items-center gap-1 hover:text-brand-pink">LinkedIn <ExternalLink size={12}/></Link>
                             <Link href="https://www.instagram.com/p/DRy-KqxjKlZ/" target="_blank" className="text-xs font-bold flex items-center gap-1 hover:text-brand-pink">Instagram <Instagram size={12}/></Link>
@@ -240,7 +240,7 @@ export default function CodeToLeadPage() {
           <div className="flex flex-col items-center md:grid md:grid-cols-5 md:items-start gap-8 mb-16">
             <Link href="/" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Layout size={20}/> Home</Link>
             <Link href="/about" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Target size={20}/> About</Link>
-            <Link href="/jobapay-ai" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Layers size={20}/> Jobapay AI</Link>
+            <Link href="/jobapay" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Layers size={20}/> Jobapay</Link>
             <Link href="/engineering" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Terminal size={20}/> Engineering</Link>
             <Link href="/community" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Network size={20}/> Community</Link>
           </div>

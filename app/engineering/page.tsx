@@ -230,7 +230,7 @@ export default function EngineeringPage() {
           <div className="flex flex-col items-center md:grid md:grid-cols-5 md:items-start gap-8 mb-16">
             <Link href="/" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><Layout size={20}/> Home</Link>
             <Link href="/about" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><Target size={20}/> About</Link>
-            <Link href="/jobapay-ai" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><Layers size={20}/> Jobapay AI</Link>
+            <Link href="/jobapay" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><Layers size={20}/> Jobapay</Link>
             <Link href="/community" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><Network size={20}/> Community</Link>
             <Link href="/code-to-lead" className="group flex items-center gap-3 text-white font-bold hover:text-brand-pink transition-colors"><PenTool size={20}/> Code to Lead</Link>
           </div>

@@ -226,7 +226,7 @@ export default function CommunityPage() {
       {/* --- FOOTER MENU (Alignment Fixed) --- */}
       <footer className="bg-white text-charcoal pt-20 pb-10 px-6 md:px-12 border-t border-charcoal/10 relative z-20">
         <div className="max-w-6xl mx-auto text-left">
-          <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block text-left">Explore</span>
+          <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block text-center">Explore</span>
           
           <div className="flex flex-col items-start md:grid md:grid-cols-5 md:items-start gap-8 mb-16 text-left">
             <Link href="/" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
@@ -235,8 +235,8 @@ export default function CommunityPage() {
             <Link href="/about" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
               <Target size={20}/> About
             </Link>
-            <Link href="/jobapay-ai" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
-              <Layers size={20}/> Jobapay AI
+            <Link href="/jobapay" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
+              <Layers size={20}/> Jobapay
             </Link>
             <Link href="/engineering" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
               <Terminal size={20}/> Engineering
