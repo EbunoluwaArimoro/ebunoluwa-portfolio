@@ -49,7 +49,7 @@ const VideoCard = () => {
 
 export default function Community() {
   return (
-    <section id="community" className="py-24 px-6 md:px-12 bg-sand text-charcoal">
+    <section id="community" className="pt-12 pb-24 md:py-24 px-6 md:px-12 bg-sand text-charcoal">
       <div className="max-w-6xl mx-auto">
           <h2 className="font-serif text-4xl mb-4">Community.</h2>
           <div className="h-1 w-20 bg-charcoal"></div>
