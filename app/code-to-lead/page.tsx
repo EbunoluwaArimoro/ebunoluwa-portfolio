@@ -7,32 +7,56 @@ import {
   Youtube, Instagram, Newspaper, Globe, Mail, Send
 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-// --- WEEKLY JOURNAL DATA ---
-const WEEKLY_FEED = [
+// --- THE FALLBACK DATA ---
+const FALLBACK_POSTS = [
   {
-    date: "Dec 21, 2025",
-    title: "High Agency vs. High Activity",
-    link: "https://codetolead.substack.com/p/high-agency-vs-activity",
-    tag: "Leadership"
+    title: "Your 2026 Blueprint: From AI Tools to AI Strategy",
+    link: "https://www.linkedin.com/pulse/your-2026-blueprint-from-ai-tools-strategy-ebunoluwa-arimoro-c9wkf",
+    pubDate: "2025-11-05",
+    categories: ["Strategy"]
   },
   {
-    date: "Dec 14, 2025",
-    title: "Why Infrastructure is the New UX",
-    link: "https://codetolead.substack.com/p/infra-ux",
-    tag: "Architecture"
+    title: "Your Codebase Is Quietly Negotiating Your Next Valuation",
+    link: "https://www.linkedin.com/pulse/your-codebase-quietly-negotiating-next-valuation-ebunoluwa-arimoro-av74f",
+    pubDate: "2025-11-19",
+    categories: ["Engineering"]
   },
   {
-    date: "Dec 07, 2025",
-    title: "The Human Operating System",
-    link: "https://codetolead.substack.com/p/human-os",
-    tag: "Mindset"
+    title: "The End of the 'Junior' Developer: Career Survival Guide",
+    link: "https://www.linkedin.com/pulse/end-junior-developer-your-2026-career-survival-guide-ebunoluwa-arimoro/",
+    pubDate: "2025-09-20",
+    categories: ["Leadership"]
   }
 ];
 
 export default function CodeToLeadPage() {
   const [email, setEmail] = useState("");
+  const [displayPosts, setDisplayPosts] = useState(FALLBACK_POSTS); 
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchFeed = async () => {
+      try {
+        const response = await fetch(
+          "https://api.rss2json.com/v1/api.json?rss_url=https://codetolead.substack.com/feed"
+        );
+        const data = await response.json();
+        
+        if (data && data.status === "ok") {
+          const livePosts = data.items || [];
+          const combined = [...livePosts, ...FALLBACK_POSTS].slice(0, 3);
+          setDisplayPosts(combined);
+        }
+      } catch (error) {
+        console.error("Feed fetch failed, staying with fallback content.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchFeed();
+  }, []);
 
   return (
     <main className="min-h-screen bg-white text-charcoal font-sans selection:bg-brand-pink selection:text-white">
@@ -103,14 +127,18 @@ export default function CodeToLeadPage() {
         <div className="max-w-4xl mx-auto">
             <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-gray-400 mb-10">Latest Journal Entries</h2>
             <div className="divide-y divide-gray-100">
-                {WEEKLY_FEED.map((post, i) => (
+                {displayPosts.map((post: any, i: number) => (
                     <Link key={i} href={post.link} target="_blank" className="group flex flex-col md:flex-row md:items-center justify-between py-8 first:pt-0 hover:px-4 transition-all">
                         <div className="flex flex-col gap-1">
-                            <span className="text-[10px] font-mono text-gray-400 uppercase">{post.date}</span>
+                            <span className="text-[10px] font-mono text-gray-400 uppercase">
+                              {new Date(post.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                            </span>
                             <h3 className="font-serif text-2xl group-hover:text-brand-pink transition-colors">{post.title}</h3>
                         </div>
                         <div className="flex items-center gap-4 mt-4 md:mt-0">
-                            <span className="text-[10px] font-bold uppercase tracking-widest bg-sand px-3 py-1 rounded-full text-gray-500">{post.tag}</span>
+                            <span className="text-[10px] font-bold uppercase tracking-widest bg-sand px-3 py-1 rounded-full text-gray-500">
+                              {post.categories?.[0] || 'Leadership'}
+                            </span>
                             <ArrowRight size={18} className="text-gray-200 group-hover:text-brand-pink transform group-hover:translate-x-1 transition-all"/>
                         </div>
                     </Link>
@@ -124,26 +152,26 @@ export default function CodeToLeadPage() {
         <div className="max-w-6xl mx-auto">
             <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-gray-400 mb-16">The Archive Highlights</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
-                <Link href="https://codetolead.substack.com/p/high-agency-vs-activity" target="_blank" className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 group hover:-translate-y-1 transition-all flex flex-col justify-between">
+                <Link href="https://www.linkedin.com/pulse/when-america-taxes-talent-who-wins-policy-capital-people-arimoro-5q8if" target="_blank" className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 group hover:-translate-y-1 transition-all flex flex-col justify-between">
                     <div>
                         <div className="flex items-center gap-3 mb-6">
                             <div className="w-10 h-10 rounded-lg bg-brand-pink/10 flex items-center justify-center text-brand-pink"><Target size={20}/></div>
-                            <span className="font-mono text-[10px] font-bold text-gray-400">VOL. 01</span>
+                            <span className="font-mono text-[10px] font-bold text-gray-400">VOL. 28</span>
                         </div>
-                        <h3 className="font-serif text-3xl mb-4 group-hover:text-brand-pink transition-colors">High Agency vs. Activity</h3>
-                        <p className="text-gray-600 leading-relaxed mb-8">Framework for developing high agency in low-trust environments.</p>
+                        <h3 className="font-serif text-3xl mb-4 group-hover:text-brand-pink transition-colors">When America Taxes Talent</h3>
+                        <p className="text-gray-600 leading-relaxed mb-8">An analysis of global policy, capital, and the movement of African technical talent.</p>
                     </div>
                     <span className="text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">Read Article <ExternalLink size={12}/></span>
                 </Link>
 
-                <Link href="https://codetolead.substack.com/p/infra-ux" target="_blank" className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 group hover:-translate-y-1 transition-all flex flex-col justify-between">
+                <Link href="https://www.linkedin.com/pulse/beyond-model-what-building-ai-actually-looks-like-ebunoluwa-arimoro-gobtf" target="_blank" className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 group hover:-translate-y-1 transition-all flex flex-col justify-between">
                     <div>
                         <div className="flex items-center gap-3 mb-6">
                             <div className="w-10 h-10 rounded-lg bg-charcoal/5 flex items-center justify-center text-charcoal"><Cpu size={20}/></div>
-                            <span className="font-mono text-[10px] font-bold text-gray-400">VOL. 04</span>
+                            <span className="font-mono text-[10px] font-bold text-gray-400">VOL. 32</span>
                         </div>
-                        <h3 className="font-serif text-3xl mb-4 group-hover:text-brand-pink transition-colors">Infrastructure is the New UX</h3>
-                        <p className="text-gray-600 leading-relaxed mb-8">My thesis on reliability as the primary interface in Africa.</p>
+                        <h3 className="font-serif text-3xl mb-4 group-hover:text-brand-pink transition-colors">Beyond the AI Model</h3>
+                        <p className="text-gray-600 leading-relaxed mb-8">What "building" in AI actually looks like beyond the hype and high-level wrappers.</p>
                     </div>
                     <span className="text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">Read Article <ExternalLink size={12}/></span>
                 </Link>
@@ -205,28 +233,28 @@ export default function CodeToLeadPage() {
         </div>
       </section>
 
-      {/* --- STACKED FOOTER --- */}
-      {/* --- REFINED STACKED FOOTER (Light) --- */}
+      {/* --- FOOTER --- */}
       <footer className="bg-white text-charcoal pt-20 pb-10 px-6 md:px-12 border-t border-charcoal/10 relative z-20">
-  <div className="max-w-6xl mx-auto text-center md:text-left">
-    <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block">Explore</span>
-    <div className="flex flex-col items-center md:grid md:grid-cols-5 md:items-start gap-8 mb-16">
-      <Link href="/" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Layout size={20}/> Home</Link>
-      <Link href="/about" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Target size={20}/> About</Link>
-      <Link href="/jobapay-ai" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Layers size={20}/> Jobapay AI</Link>
-      <Link href="/engineering" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Terminal size={20}/> Engineering</Link>
-      <Link href="/community" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Network size={20}/> Community</Link>
-    </div>
-    <div className="flex flex-col md:flex-row justify-between items-center gap-8 border-t border-charcoal/10 pt-12">
-      <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 text-[10px] font-mono uppercase tracking-[0.2em] text-charcoal">
-         <Link href="mailto:ebunarimoro@gmail.com" className="hover:text-brand-pink transition-colors font-bold">EMAIL</Link>
-         <Link href="https://linkedin.com/in/ebunoluwa-arimoro" target="_blank" className="hover:text-brand-pink transition-colors font-bold">LINKEDIN</Link>
-         <Link href="https://github.com/EbunoluwaArimoro/" target="_blank" className="hover:text-brand-pink transition-colors font-bold">GITHUB</Link>
-      </div>
-      <div className="text-[9px] text-charcoal font-mono tracking-widest uppercase md:ml-auto">© 2026 Ebunoluwa Arimoro.</div>
-    </div>
-  </div>
-</footer>
+        <div className="max-w-6xl mx-auto text-center md:text-left">
+          <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block">Explore</span>
+          <div className="flex flex-col items-center md:grid md:grid-cols-5 md:items-start gap-8 mb-16">
+            <Link href="/" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Layout size={20}/> Home</Link>
+            <Link href="/about" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Target size={20}/> About</Link>
+            <Link href="/jobapay-ai" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Layers size={20}/> Jobapay AI</Link>
+            <Link href="/engineering" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Terminal size={20}/> Engineering</Link>
+            <Link href="/community" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors"><Network size={20}/> Community</Link>
+          </div>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 border-t border-charcoal/10 pt-12">
+            <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 text-[10px] font-mono uppercase tracking-[0.2em] text-charcoal">
+               <Link href="mailto:ebunarimoro@gmail.com" className="hover:text-brand-pink transition-colors font-bold">EMAIL</Link>
+               <Link href="https://linkedin.com/in/ebunoluwa-arimoro" target="_blank" className="hover:text-brand-pink transition-colors font-bold">LINKEDIN</Link>
+               <Link href="https://github.com/EbunoluwaArimoro/" target="_blank" className="hover:text-brand-pink transition-colors font-bold">GITHUB</Link>
+               <Link href="https://ebunoluwa-arimoro-portfolio-website.webflow.io/" target="_blank" className="hover:text-brand-pink transition-colors font-bold">PORTFOLIO</Link>
+            </div>
+            <div className="text-[9px] text-charcoal font-mono tracking-widest uppercase md:ml-auto">© 2026 Ebunoluwa Arimoro.</div>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }

@@ -52,24 +52,24 @@ export default function AboutPage() {
                     When I transitioned into Engineering, I brought that auditor's mindset with me. While most builders focus on the 'clean UI,' I focus on the <strong>operational plumbing</strong>. 
                 </p>
                 <p className="text-lg text-gray-500 leading-relaxed font-light">
-                    In Africa, technology isn't just about code; it's about solving for infrastructure deficits and trust gaps. My background allows me to bridge the gap between business logic and technical execution.
+                    Technology isn't just about code; it's about solving for infrastructure deficits and trust gaps. My background allows me to bridge the gap between business logic and technical execution.
                 </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-gray-100">
                 <div className="space-y-3">
                     <Target className="text-brand-pink" size={24}/>
-                    <h3 className="font-bold uppercase tracking-widest text-xs">The Mission</h3>
+                    <h3 className="font-bold uppercase tracking-widest text-xs">Mission</h3>
                     <p className="text-sm text-gray-500">To build the 'Operating Systems for Trust' that allow African ventures to scale without friction.</p>
                 </div>
                 <div className="space-y-3">
                     <Zap className="text-brand-purple" size={24}/>
-                    <h3 className="font-bold uppercase tracking-widest text-xs">The Method</h3>
+                    <h3 className="font-bold uppercase tracking-widest text-xs">Method</h3>
                     <p className="text-sm text-gray-500">High-agency leadership combined with defensive, offline-first system architecture.</p>
                 </div>
                 <div className="space-y-3">
                     <ShieldCheck className="text-charcoal" size={24}/>
-                    <h3 className="font-bold uppercase tracking-widest text-xs">The Standard</h3>
+                    <h3 className="font-bold uppercase tracking-widest text-xs">Standard</h3>
                     <p className="text-sm text-gray-500">Reliability as the ultimate user experience. If it doesn't work under constraint, it doesn't work.</p>
                 </div>
             </div>
@@ -104,6 +104,7 @@ export default function AboutPage() {
          <Link href="mailto:ebunarimoro@gmail.com" className="hover:text-brand-pink transition-colors font-bold">EMAIL</Link>
          <Link href="https://linkedin.com/in/ebunoluwa-arimoro" target="_blank" className="hover:text-brand-pink transition-colors font-bold">LINKEDIN</Link>
          <Link href="https://github.com/EbunoluwaArimoro/" target="_blank" className="hover:text-brand-pink transition-colors font-bold">GITHUB</Link>
+         <Link href="https://ebunoluwa-arimoro-portfolio-website.webflow.io/" target="_blank" className="hover:text-brand-pink transition-colors font-bold">PORTFOLIO</Link>
       </div>
       <div className="text-[9px] text-charcoal font-mono tracking-widest uppercase md:ml-auto">© 2026 Ebunoluwa Arimoro.</div>
     </div>

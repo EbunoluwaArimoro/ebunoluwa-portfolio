@@ -8,7 +8,6 @@ import { useRef } from "react";
 
 // --- HELPER COMPONENT: BALANCED VIDEO CARD (Local File Version) ---
 const VideoCard = () => {
-  // Now using the local compressed file
   const videoSource = "/herdacity-video.mp4"; 
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -21,65 +20,70 @@ const VideoCard = () => {
   };
 
   return (
-    <div className="aspect-video relative rounded-lg overflow-hidden shadow-sm bg-charcoal">
-      
-      {/* 1. MOBILE VERSION (Full Color / No Bars) */}
-      <div className="md:hidden w-full h-full relative">
-        <video
-          src={videoSource}
-          className="w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline // CRITICAL for iOS
-        />
-        {/* TEXT OVERLAY FOR MOBILE (PRESERVED) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 z-10 pointer-events-none">
-            <span className="text-brand-pink text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md">Dec 2025</span>
-            <h3 className="text-white font-serif text-2xl drop-shadow-md">Becoming Her</h3>
-            <p className="text-gray-100 text-sm mt-2 leading-relaxed font-medium drop-shadow-md">
-                End of year strategic goal-setting session with our members in Lagos, Nigeria.
-            </p>
-        </div>
-      </div>
-
-      {/* 2. DESKTOP VERSION (Full Color / Restored Event Text) */}
-      <div 
-        className="hidden md:block w-full h-full relative cursor-pointer group"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <div className="w-full h-full opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out absolute inset-0 z-10">
+    <Link href="https://herdacity.com/events" target="_blank" className="block group">
+      <div className="aspect-video relative rounded-lg overflow-hidden shadow-sm bg-charcoal">
+        
+        {/* 1. MOBILE VERSION (Full Color / No Bars) */}
+        <div className="md:hidden w-full h-full relative">
           <video
-            ref={videoRef}
             src={videoSource}
             className="w-full h-full object-cover"
+            autoPlay
             loop
             muted
-            playsInline
+            playsInline 
           />
+          {/* TEXT OVERLAY FOR MOBILE */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 z-10 pointer-events-none">
+              <span className="text-brand-pink text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md">Dec 2025</span>
+              <h3 className="text-white font-serif text-2xl drop-shadow-md">Becoming Her</h3>
+              <p className="text-gray-100 text-sm mt-2 leading-relaxed font-medium drop-shadow-md">
+                  End of year strategic goal-setting session with our members in Lagos, Nigeria.
+              </p>
+          </div>
         </div>
 
-        {/* Static Keyframe Image - Full Color */}
-        <div className="absolute inset-0 z-0 group-hover:opacity-0 transition-opacity duration-700">
-          <Image 
-              src="/herdacity-video-keyframe.jpg" 
-              alt="Community Video"
-              fill
-              className="object-cover"
-          />
-        </div>
+        {/* 2. DESKTOP VERSION */}
+        <div 
+          className="hidden md:block w-full h-full relative cursor-pointer"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className="w-full h-full opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out absolute inset-0 z-10">
+            <video
+              ref={videoRef}
+              src={videoSource}
+              className="w-full h-full object-cover"
+              loop
+              muted
+              playsInline
+            />
+          </div>
 
-        {/* RESTORED EVENT TEXT OVERLAY (PRESERVED) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 z-10 pointer-events-none">
-            <span className="text-brand-pink text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md">Dec 2025</span>
-            <h3 className="text-white font-serif text-2xl drop-shadow-md">Becoming Her</h3>
-            <p className="text-gray-100 text-sm mt-2 leading-relaxed font-medium drop-shadow-md">
-                End of year strategic goal-setting session with our members in Lagos, Nigeria.
-            </p>
+          {/* Static Keyframe Image */}
+          <div className="absolute inset-0 z-0 group-hover:opacity-0 transition-opacity duration-700">
+            <Image 
+                src="/herdacity-video-keyframe.jpg" 
+                alt="Community Video"
+                fill
+                className="object-cover"
+            />
+          </div>
+
+          {/* EVENT TEXT OVERLAY */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 z-10 pointer-events-none">
+              <span className="text-brand-pink text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md">Dec 2025</span>
+              <h3 className="text-white font-serif text-2xl drop-shadow-md group-hover:text-brand-pink transition-colors">Becoming Her</h3>
+              <p className="text-gray-100 text-sm mt-2 leading-relaxed font-medium drop-shadow-md">
+                  End of year strategic goal-setting session with our members in Lagos, Nigeria.
+              </p>
+              <div className="flex items-center gap-2 text-white text-[10px] font-bold uppercase tracking-[0.2em] mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                View Gallery <ArrowRight size={12}/>
+              </div>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -166,21 +170,21 @@ export default function CommunityPage() {
         <div className="max-w-6xl mx-auto">
             <div className="flex justify-between items-end mb-12">
                 <div>
-                    <h2 className="font-serif text-4xl mb-4">On The Ground.</h2>
-                    <p className="text-gray-500">Real connection. Real impact.</p>
+                    <h2 className="font-serif text-4xl mb-4">IRL Experiences.</h2>
+                    <p className="text-gray-500">Beyond the screen. Direct influence.</p>
                 </div>
-                <Link href="https://herdacity.com" target="_blank" className="hidden md:flex items-center gap-2 text-sm font-bold uppercase tracking-wide hover:text-brand-pink transition-colors">
-                    View Platform <ExternalLink size={16}/>
+                <Link href="https://herdacity.com/events" target="_blank" className="hidden md:flex items-center gap-2 text-sm font-bold uppercase tracking-wide hover:text-brand-pink transition-colors">
+                    Explore Events <ExternalLink size={16}/>
                 </Link>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
                 
-                {/* CARD 1: VIDEO (Responsive Component) */}
+                {/* CARD 1: VIDEO (Wraps inside Component above) */}
                 <VideoCard />
 
                 {/* CARD 2: ONLINE ACADEMY (Full Color Image) */}
-                <div className="group relative aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
+                <Link href="https://herdacity.com/programs" target="_blank" className="group relative aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow-lg block">
                       <Image 
                         src="/herdacity-community.jpg" 
                         alt="HERdacity Online Academy"
@@ -191,12 +195,15 @@ export default function CommunityPage() {
                       
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8">
                         <span className="text-brand-pink text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md">Online Academy</span>
-                        <h3 className="text-white font-serif text-2xl drop-shadow-md">The Knowledge Hub</h3>
+                        <h3 className="text-white font-serif text-2xl drop-shadow-md group-hover:text-brand-pink transition-colors">The Knowledge Hub</h3>
                         <p className="text-gray-100 text-sm mt-2 leading-relaxed font-medium drop-shadow-md">
                             Access to our exclusive courses, career playbooks, and leadership resources.
                         </p>
+                        <div className="flex items-center gap-2 text-white text-[10px] font-bold uppercase tracking-[0.2em] mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                          Go to Website <ArrowRight size={12}/>
+                        </div>
                     </div>
-                </div>
+                </Link>
 
             </div>
         </div>
@@ -259,6 +266,7 @@ export default function CommunityPage() {
                         <Link href="mailto:ebunarimoro@gmail.com" className="hover:text-charcoal transition-colors">EMAIL</Link>
                         <Link href="https://linkedin.com/in/ebunoluwa-arimoro" target="_blank" className="hover:text-charcoal transition-colors">LINKEDIN</Link>
                         <Link href="https://github.com/EbunoluwaArimoro/" target="_blank" className="hover:text-charcoal transition-colors">GITHUB</Link>
+                        <Link href="https://ebunoluwa-arimoro-portfolio-website.webflow.io/" target="_blank" className="hover:text-brand-pink transition-colors font-bold">PORTFOLIO</Link>
                     </div>
                 </div>
                 <span className="font-serif italic text-charcoal opacity-50 tracking-wide">Architecting Certainty.</span>
