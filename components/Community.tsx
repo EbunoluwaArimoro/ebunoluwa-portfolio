@@ -19,7 +19,7 @@ const VideoCard = () => {
 
   return (
     <Link 
-      href="https://herdacity-website.vercel.app/events" 
+      href="https://herdacity.com/events" 
       target="_blank"
       className="aspect-video relative rounded-lg overflow-hidden shadow-sm bg-charcoal block group"
     >
@@ -73,7 +73,7 @@ export default function Community() {
           <div className="grid md:grid-cols-2 gap-[30px] mt-4">
             <VideoCard />
             <Link 
-              href="https://herdacity-website.vercel.app/events" 
+              href="https://herdacity.com/events" 
               target="_blank"
               className="aspect-video bg-gray-200 rounded-lg overflow-hidden relative group/img shadow-sm block"
             >

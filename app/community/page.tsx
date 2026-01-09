@@ -34,8 +34,8 @@ const VideoCard = () => {
             playsInline 
           />
           {/* TEXT OVERLAY FOR MOBILE */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 z-10 pointer-events-none">
-              <span className="text-brand-pink text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md">Dec 2025</span>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 z-10 pointer-events-none text-left">
+              <span className="text-white text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md">Dec 2025</span>
               <h3 className="text-white font-serif text-2xl drop-shadow-md">Becoming Her</h3>
               <p className="text-gray-100 text-sm mt-2 leading-relaxed font-medium drop-shadow-md">
                   End of year strategic goal-setting session with our members in Lagos, Nigeria.
@@ -71,8 +71,9 @@ const VideoCard = () => {
           </div>
 
           {/* EVENT TEXT OVERLAY */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 z-10 pointer-events-none">
-              <span className="text-brand-pink text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md">Dec 2025</span>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 z-10 pointer-events-none text-left">
+              {/* UPDATED: Subheading now turns pink on hover */}
+              <span className="text-white text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md group-hover:text-brand-pink transition-colors">Dec 2025</span>
               <h3 className="text-white font-serif text-2xl drop-shadow-md group-hover:text-brand-pink transition-colors">Becoming Her</h3>
               <p className="text-gray-100 text-sm mt-2 leading-relaxed font-medium drop-shadow-md">
                   End of year strategic goal-setting session with our members in Lagos, Nigeria.
@@ -108,6 +109,7 @@ export default function CommunityPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          className="text-left"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-pink/20 bg-brand-pink/5 text-brand-pink mb-6">
             <Heart size={12} className="fill-brand-pink"/>
@@ -121,10 +123,11 @@ export default function CommunityPage() {
           
           <div className="text-lg md:text-xl text-gray-600 font-light leading-relaxed max-w-3xl space-y-6">
             <p>
-              Talent is distributed, but opportunity is concentrated. 
+              Talent is distributed, but opportunity is not. 
             </p>
             <p>
-              We founded <strong>The HERdacity Network</strong> to bridge that gap. We focus on the "Human Operating System": Confidence, Personal Branding, and Leadership Visibility.
+              We founded <strong>The HERdacity Network</strong> to bridge that gap. <br />
+              We focus on the "Human Operating System": Confidence, Personal Branding, and Leadership Visibility.
             </p>
           </div>
         </motion.div>
@@ -133,7 +136,7 @@ export default function CommunityPage() {
       {/* --- IMPACT METRICS --- */}
       <section className="py-20 px-6 md:px-12 bg-sand border-t border-charcoal/5">
         <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-12">
+            <div className="grid md:grid-cols-3 gap-12 text-left">
                 <div className="space-y-4">
                     <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm text-brand-pink">
                         <TrendingUp size={24}/>
@@ -168,10 +171,9 @@ export default function CommunityPage() {
       {/* --- RECENT EVENTS --- */}
       <section className="py-24 px-6 md:px-12 bg-white">
         <div className="max-w-6xl mx-auto">
-            <div className="flex justify-between items-end mb-12">
+            <div className="flex justify-between items-end mb-12 text-left">
                 <div>
-                    <h2 className="font-serif text-4xl mb-4">IRL Experiences.</h2>
-                    <p className="text-gray-500">Beyond the screen. Direct influence.</p>
+                    <h2 className="font-serif text-4xl mb-2">IRL Experiences.</h2>
                 </div>
                 <Link href="https://herdacity.com/events" target="_blank" className="hidden md:flex items-center gap-2 text-sm font-bold uppercase tracking-wide hover:text-brand-pink transition-colors">
                     Explore Events <ExternalLink size={16}/>
@@ -184,7 +186,7 @@ export default function CommunityPage() {
                 <VideoCard />
 
                 {/* CARD 2: ONLINE ACADEMY (Full Color Image) */}
-                <Link href="https://herdacity.com/programs" target="_blank" className="group relative aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow-lg block">
+                <Link href="https://herdacity.com/academy" target="_blank" className="group relative aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow-lg block">
                       <Image 
                         src="/herdacity-community.jpg" 
                         alt="HERdacity Online Academy"
@@ -193,14 +195,15 @@ export default function CommunityPage() {
                         style={{ objectPosition: "50% 65%" }}
                     />
                       
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8">
-                        <span className="text-brand-pink text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md">Online Academy</span>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 text-left">
+                        {/* UPDATED: Subheading now turns pink on hover */}
+                        <span className="text-white text-xs font-mono uppercase tracking-widest mb-2 font-bold drop-shadow-md group-hover:text-brand-pink transition-colors">Online Academy</span>
                         <h3 className="text-white font-serif text-2xl drop-shadow-md group-hover:text-brand-pink transition-colors">The Knowledge Hub</h3>
                         <p className="text-gray-100 text-sm mt-2 leading-relaxed font-medium drop-shadow-md">
                             Access to our exclusive courses, career playbooks, and leadership resources.
                         </p>
                         <div className="flex items-center gap-2 text-white text-[10px] font-bold uppercase tracking-[0.2em] mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                          Go to Website <ArrowRight size={12}/>
+                          Explore Academy <ArrowRight size={12}/>
                         </div>
                     </div>
                 </Link>
@@ -223,54 +226,39 @@ export default function CommunityPage() {
       </section>
 
       {/* --- FOOTER MENU --- */}
-      <footer className="py-12 md:py-20 px-6 md:px-12 bg-white border-t border-gray-200">
-        <div className="max-w-6xl mx-auto">
-            <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block text-center md:text-left">Explore</span>
-            
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-y-10 md:gap-x-8 mb-16 text-center md:text-left">
-                <Link href="/" className="group block">
-                    <div className="flex items-center justify-center md:justify-start gap-2 mb-2 text-charcoal font-bold text-lg group-hover:text-brand-pink transition-colors">
-                        <Layout size={20}/> Home
-                    </div>
-                </Link>
+      <footer className="bg-white text-charcoal pt-20 pb-10 px-6 md:px-12 border-t border-charcoal/10 relative z-20">
+        <div className="max-w-6xl mx-auto text-center md:text-left">
+          <span className="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 block text-left">Explore</span>
+          
+          <div className="flex flex-col items-center md:grid md:grid-cols-5 md:items-start gap-8 mb-16 text-left">
+            <Link href="/" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
+              <Layout size={20}/> Home
+            </Link>
+            <Link href="/about" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
+              <Target size={20}/> About
+            </Link>
+            <Link href="/jobapay-ai" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
+              <Layers size={20}/> Jobapay AI
+            </Link>
+            <Link href="/engineering" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
+              <Terminal size={20}/> Engineering
+            </Link>
+            <Link href="/code-to-lead" className="group flex items-center gap-3 text-charcoal font-bold hover:text-brand-pink transition-colors">
+              <PenTool size={20}/> Code to Lead
+            </Link>
+          </div>
 
-                <Link href="/about" className="group block">
-                    <div className="flex items-center justify-center md:justify-start gap-2 mb-2 text-charcoal font-bold text-lg group-hover:text-brand-pink transition-colors">
-                        <Target size={20}/> About
-                    </div>
-                </Link>
-
-                <Link href="/jobapay-ai" className="group block">
-                    <div className="flex items-center justify-center md:justify-start gap-2 mb-2 text-charcoal font-bold text-lg group-hover:text-brand-pink transition-colors">
-                        <Layers size={20}/> Jobapay AI
-                    </div>
-                </Link>
-
-                <Link href="/engineering" className="group block">
-                    <div className="flex items-center justify-center md:justify-start gap-2 mb-2 text-charcoal font-bold text-lg group-hover:text-brand-pink transition-colors">
-                        <Terminal size={20}/> Engineering
-                    </div>
-                </Link>
-
-                <Link href="/code-to-lead" className="group block">
-                    <div className="flex items-center justify-center md:justify-start gap-2 mb-2 text-charcoal font-bold text-lg group-hover:text-brand-pink transition-colors">
-                        <PenTool size={20}/> Code to Lead
-                    </div>
-                </Link>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 border-t border-charcoal/10 pt-12">
+            <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 text-[10px] font-mono uppercase tracking-[0.2em] text-charcoal font-bold">
+               <Link href="mailto:ebunarimoro@gmail.com" className="hover:text-brand-pink transition-colors">EMAIL</Link>
+               <Link href="https://linkedin.com/in/ebunoluwa-arimoro" target="_blank" className="hover:text-brand-pink transition-colors">LINKEDIN</Link>
+               <Link href="https://github.com/EbunoluwaArimoro/" target="_blank" className="hover:text-brand-pink transition-colors">GITHUB</Link>
+               <Link href="https://ebunoluwa-arimoro-portfolio-website.webflow.io/" target="_blank" className="hover:text-brand-pink transition-colors font-bold">PORTFOLIO</Link>
             </div>
-
-            <div className="mt-16 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 gap-8">
-                <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-center md:text-left">
-                    <span className="opacity-60">© 2026 Ebunoluwa Arimoro</span>
-                    <div className="flex items-center gap-6 font-bold uppercase tracking-widest text-[10px]">
-                        <Link href="mailto:ebunarimoro@gmail.com" className="hover:text-charcoal transition-colors">EMAIL</Link>
-                        <Link href="https://linkedin.com/in/ebunoluwa-arimoro" target="_blank" className="hover:text-charcoal transition-colors">LINKEDIN</Link>
-                        <Link href="https://github.com/EbunoluwaArimoro/" target="_blank" className="hover:text-charcoal transition-colors">GITHUB</Link>
-                        <Link href="https://ebunoluwa-arimoro-portfolio-website.webflow.io/" target="_blank" className="hover:text-brand-pink transition-colors font-bold">PORTFOLIO</Link>
-                    </div>
-                </div>
-                <span className="font-serif italic text-charcoal opacity-50 tracking-wide">Architecting Certainty.</span>
+            <div className="text-[9px] text-charcoal font-mono tracking-widest uppercase md:ml-auto">
+              © 2026 Ebunoluwa Arimoro.
             </div>
+          </div>
         </div>
       </footer>
 
