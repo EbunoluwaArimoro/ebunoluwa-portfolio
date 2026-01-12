@@ -23,7 +23,7 @@ export default function AboutPage() {
       <section className="pt-40 pb-20 px-6 md:px-12 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gray-400 mb-4 block">The Origin Story</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gray-400 mb-4 block">My Origin Story</span>
                 <h1 className="font-serif text-5xl md:text-7xl leading-[1.1] mb-8 tracking-tighter">
                   From Auditing <br/>
                   to <span className="text-brand-pink">Architecting.</span>
@@ -37,6 +37,7 @@ export default function AboutPage() {
                     src="/image_0.png" 
                     alt="Ebunoluwa Arimoro" 
                     fill 
+                    priority={true}
                     className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
             </div>
