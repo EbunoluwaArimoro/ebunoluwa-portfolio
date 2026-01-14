@@ -79,6 +79,7 @@ export default function Hero({ y }: HeroProps) {
               <span className="font-serif text-white font-bold text-base md:text-lg tracking-tighter">Founders Institute</span>
               <span className="font-serif text-white font-bold text-base md:text-lg tracking-tighter">Aurora Tech Awards</span>
               <span className="font-serif text-white font-bold text-base md:text-lg tracking-tighter">BusinessDay</span>
+              <span className="font-serif text-white font-bold text-base md:text-lg tracking-tighter">YALI</span>
               <span className="font-serif text-white font-bold text-base md:text-lg tracking-tighter">Crest Africa</span>
           </div>
         </motion.div>
