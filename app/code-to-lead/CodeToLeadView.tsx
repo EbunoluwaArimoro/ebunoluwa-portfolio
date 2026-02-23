@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-// ADDED: Layout, Layers, Terminal, Network to the imports below
 import { 
   ArrowLeft, PenTool, ExternalLink, Target, Cpu, Award, Globe, 
   Instagram, Newspaper, Mail, Send, ArrowRight, Layout, Layers, Terminal, Network 
@@ -106,6 +105,11 @@ export default function CodeToLeadView({ posts }: { posts: Post[] }) {
                     </Link>
                 ))}
             </div>
+            <div className="mt-12">
+                  <Link href="https://codetolead.substack.com/archive" target="_blank" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest border border-charcoal/20 px-6 py-3 rounded-full hover:bg-charcoal hover:text-white transition-all">
+                      Read Full Archive <ArrowRight size={14}/>
+                  </Link>
+            </div>
         </div>
       </section>
 
@@ -148,23 +152,35 @@ export default function CodeToLeadView({ posts }: { posts: Post[] }) {
             
             <div className="mb-24">
                 <h3 className="font-mono text-[10px] uppercase tracking-[0.3em] text-brand-pink mb-10 border-b border-brand-pink/10 pb-4">Recognition</h3>
-                <div className="grid md:grid-cols-2 gap-12 text-left">
+                
+                {/* --- CORRECTED GRID PLACEMENT HERE --- */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 text-left">
                     <div className="space-y-4">
                         <div className="flex items-center gap-2 text-brand-pink mb-2"><Award size={20}/> <span className="font-bold uppercase tracking-widest text-[10px]">Award</span></div>
                         <h4 className="font-serif text-3xl md:text-4xl">Top 50 Voices in African Tech</h4>
-                        <p className="text-gray-500 leading-relaxed">Crest Africa & Business Day innovator spotlight.</p>
+                        <p className="text-gray-500 leading-relaxed text-sm">Crest Africa & Business Day innovator spotlight.</p>
                         <div className="flex gap-4 pt-2">
                             <Link href="https://crestafrica.com/top-50-voices-in-african-tech-2025/" target="_blank" className="text-xs font-bold underline underline-offset-4 hover:text-brand-pink">Crest Africa</Link>
                             <Link href="https://businessday.ng/brands-advertising/article/crest-africa-celebrates-top-50-voices-in-african-tech-2025-bold-innovators-shaping-africas-tomorrow/" target="_blank" className="text-xs font-bold underline underline-offset-4 hover:text-brand-pink">Business Day</Link>
                         </div>
                     </div>
+                    
                     <div className="space-y-4">
                         <div className="flex items-center gap-2 text-brand-purple mb-2"><Globe size={20}/> <span className="font-bold uppercase tracking-widest text-[10px]">Founder Series</span></div>
                         <h4 className="font-serif text-3xl md:text-4xl">Aurora Tech Awards Feature</h4>
-                        <p className="text-gray-500 leading-relaxed">A strategic feature on my leadership at Jobapay.</p>
+                        <p className="text-gray-500 leading-relaxed text-sm">A strategic feature on my leadership at Jobapay.</p>
                         <div className="flex gap-4 pt-2">
                             <Link href="https://www.linkedin.com/posts/aurora-tech-award_a-day-with-the-boldest-founder-activity-7401915187232079872-Age1" target="_blank" className="text-xs font-bold flex items-center gap-1 hover:text-brand-pink">LinkedIn <ExternalLink size={12}/></Link>
                             <Link href="https://www.instagram.com/p/DRy-KqxjKlZ/" target="_blank" className="text-xs font-bold flex items-center gap-1 hover:text-brand-pink">Instagram <Instagram size={12}/></Link>
+                        </div>
+                    </div>
+
+                    <div className="space-y-4">
+                        <div className="flex items-center gap-2 text-charcoal mb-2"><Newspaper size={20}/> <span className="font-bold uppercase tracking-widest text-[10px]">List</span></div>
+                        <h4 className="font-serif text-3xl md:text-4xl">100 Entrepreneurs in Africa to Watch</h4>
+                        <p className="text-gray-500 leading-relaxed text-sm">Recognized as a leading founder to watch in 2026.</p>
+                        <div className="flex gap-4 pt-2">
+                            <Link href="https://todayafrica.co/100-entrepreneurs-in-africa-to-watch-in-2026/" target="_blank" className="text-xs font-bold underline underline-offset-4 hover:text-brand-pink">Today Africa</Link>
                         </div>
                     </div>
                 </div>

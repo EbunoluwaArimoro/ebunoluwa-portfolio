@@ -95,8 +95,8 @@ export default function JobapayPage() {
             <div className="grid md:grid-cols-3 gap-8">
                 <div className="p-6 rounded-xl border border-gray-200 hover:border-brand-pink/30 transition-colors text-left">
                     <Server size={32} className="text-brand-pink mb-4"/>
-                    <h3 className="font-bold mb-2">Multi-Tenant SaaS</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed text-left">Dashboards for Facility Managers to track deployed crews and manage work orders in real-time.</p>
+                    <h3 className="font-bold mb-2">Multi-Facility Command Center</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed text-left">Dashboards for Facility Managers to track deployed crews and manage work orders across all locations in real-time.</p>
                 </div>
                 <div className="p-6 rounded-xl border border-gray-200 hover:border-brand-pink/30 transition-colors text-left">
                     <Cpu size={32} className="text-brand-purple mb-4"/>

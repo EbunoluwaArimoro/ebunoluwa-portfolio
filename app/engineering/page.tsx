@@ -87,7 +87,7 @@ export default function EngineeringPage() {
                         <div>
                             <div className="flex justify-between items-center mb-1">
                                 <span className="font-bold text-lg">Tailwind / Framer</span>
-                                <span className="px-2 py-1 bg-gray-100 text-[10px] font-mono uppercase tracking-wide rounded text-gray-500">Architect</span>
+                                <span className="px-2 py-1 bg-gray-100 text-[10px] font-mono uppercase tracking-wide rounded text-gray-500">Proficient</span>
                             </div>
                             <p className="text-sm text-gray-600">Design Systems, Micro-interactions, Responsive Layouts.</p>
                         </div>
