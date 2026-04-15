@@ -190,6 +190,7 @@ export default function CodeToLeadView({ posts }: { posts: Post[] }) {
                 <h3 className="font-mono text-[10px] uppercase tracking-[0.3em] text-gray-400 mb-10 border-b border-gray-100 pb-4 text-left">Keynotes & Appearances</h3>
                 <div className="grid md:grid-cols-2 gap-x-16 gap-y-12 text-left">
                     {[
+                        { org: "Wetech x NexaScale", title: "Secondary School Tour", link: "https://www.linkedin.com/posts/wetechng_wetechafrica-womenintech-nexascale-activity-7437491685787328514-l_8o" },
                         { org: "Global Data & AI", title: "Empowering Leaders with AI", link: "https://www.linkedin.com/posts/dataglobal-hub_gdai2025-aiforstartups-techleadership-activity-7344652341737840641-VB_9" },
                         { org: "Tech Naija FM", title: "Trust and Adoption", link: "https://www.youtube.com/live/8ZIxeDff3_w" },
                         { org: "GDG OOU", title: "Accelerate Action", link: "https://www.linkedin.com/posts/sca-oou-760b15289_iwd2025-womenintech-accelerateaction-activity-7311705640832319488-vU8W" },

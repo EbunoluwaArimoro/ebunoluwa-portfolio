@@ -25,8 +25,13 @@ export default function CodeToLead() {
           // Get the most recent post
           const livePost = data.items[0];
           
-          // Substack descriptions contain HTML tags. We strip them out and truncate the text so it fits the card beautifully.
+          // Substack descriptions contain HTML tags. We strip them out.
           let cleanDesc = livePost.description.replace(/<[^>]+>/g, '').trim();
+          
+          // NEW: Remove "TLDR", "TL;DR", "TLDR:", etc. from the beginning of the text
+          cleanDesc = cleanDesc.replace(/^TL;?DR\s*[:\-]?\s*/i, '').trim();
+
+          // Truncate the text so it fits the card beautifully.
           if (cleanDesc.length > 130) {
             cleanDesc = cleanDesc.substring(0, 130) + "...";
           }
